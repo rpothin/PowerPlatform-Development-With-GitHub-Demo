@@ -27,7 +27,9 @@ It is a GitHub repository used for demonstrations of Power Platform development 
 
 ## 📖 Documentation
 
-To come...
+### Tips
+
+- Use `dotnet msbuild /t:build /restore` in place of `msbuild /t:build /restore` in a GitHub Codespace
 
 ## 📝 License
 
