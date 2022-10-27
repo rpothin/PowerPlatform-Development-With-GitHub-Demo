@@ -48,9 +48,9 @@ It is a GitHub repository used for demonstrations of Power Platform development 
 9. Run the `pac solution import --path ./bin/Debug/PowerPlatformDevWithGitHub.zip --async --publish-changes` command to import the solution to the selected environment
 
 > **Note**
-> [pac pcf init](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/pcf#pac-pcf-init)
-> [pac solution add-reference](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/solution#pac-solution-add-reference)
-> [pac solution import](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/solution#pac-solution-import)
+> - [pac pcf init](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/pcf#pac-pcf-init)
+> - [pac solution add-reference](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/solution#pac-solution-add-reference)
+> - [pac solution import](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/solution#pac-solution-import)
 
 ### Tips
 
