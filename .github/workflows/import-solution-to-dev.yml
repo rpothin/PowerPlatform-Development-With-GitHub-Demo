@@ -47,7 +47,6 @@ jobs:
           ls
           
           echo "==========  List PCF components =========="
-          cd '${{ github.workspace }}'
           $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Recurse -Directory -Force | Select-Object FullName
           $pcfComponentsFolderPath
 
