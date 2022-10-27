@@ -48,7 +48,7 @@ jobs:
           
           echo "==========  List PCF components =========="
           $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Recurse -Directory -Force | Select-Object FullName
-          $pcfComponentsFolderPath
+          Write-Host $pcfComponentsFolderPath
 
           echo "==========  Prepare each PCF component =========="
           foreach ($pcfComponentFolderPath in $pcfComponentsFolderPath) {
