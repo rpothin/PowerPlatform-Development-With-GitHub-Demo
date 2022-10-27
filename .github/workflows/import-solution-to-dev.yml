@@ -47,7 +47,7 @@ jobs:
           ls
           
           echo "==========  List PCF components =========="
-          $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Recurse -Directory -Force | Select-Object FullName
+          $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Recurse -Directory -Force | Select-Object FullName | ConvertFrom-Json
           Write-Host $pcfComponentsFolderPath
 
           echo "==========  Prepare each PCF component =========="
