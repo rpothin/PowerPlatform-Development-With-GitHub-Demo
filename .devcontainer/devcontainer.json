@@ -13,5 +13,8 @@
         "ms-dotnettools.vscode-dotnet-runtime",
         "microsoft-IsvExpTools.powerplatform-vscode"
 	],
+    "forwardPorts": [
+        8181
+    ],
     "remoteUser": "node"
 }
