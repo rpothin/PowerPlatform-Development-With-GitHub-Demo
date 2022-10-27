@@ -45,6 +45,7 @@ jobs:
       - name: Prepare PCF components
         run: |
           echo "==========  List PCF components =========="
+          Get-ChildItem -Path ./components -Recurse -Directory -Force | Select-Object FullName
           $pcfComponentsFolderPath = Get-ChildItem -Path ./components -Recurse -Directory -Force | Select-Object FullName
           $pcfComponentsFolderPath
 
