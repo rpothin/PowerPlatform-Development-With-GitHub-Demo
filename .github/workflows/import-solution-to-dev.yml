@@ -45,7 +45,11 @@ jobs:
       - name: Prepare PCF components
         run: |
           echo "==========  List PCF components =========="
-          $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Recurse -Directory -Force | Select-Object FullName | ConvertFrom-Json
+          $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Directory | Select-Object FullName
+
+          $pcfComponentsFolderPath = $pcfComponentsFolderPath | ConvertTo-Json
+          $pcfComponentsFolderPath = $pcfComponentsFolderPath -replace '\n', ''
+
           Write-Host $pcfComponentsFolderPath
 
           echo "==========  Prepare each PCF component =========="
