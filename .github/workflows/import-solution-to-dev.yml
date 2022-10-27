@@ -44,9 +44,11 @@ jobs:
       # Prepare PCF components
       - name: Prepare PCF components
         run: |
+          ls
+          
           echo "==========  List PCF components =========="
-          Get-ChildItem -Path ./components -Recurse -Directory -Force | Select-Object FullName
-          $pcfComponentsFolderPath = Get-ChildItem -Path ./components -Recurse -Directory -Force | Select-Object FullName
+          cd '${{ github.workspace }}'
+          $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Recurse -Directory -Force | Select-Object FullName
           $pcfComponentsFolderPath
 
           echo "==========  Prepare each PCF component =========="
