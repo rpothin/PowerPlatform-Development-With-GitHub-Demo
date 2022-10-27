@@ -32,7 +32,17 @@ export class Component1 implements ComponentFramework.ReactControl<IInputs, IOut
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        const props: IHelloWorldProps = { name: 'Hello, World!' };
+        var messagePrefix = "Hello world";
+        var messageSuffix = "!";
+
+        var message = "";
+        if ( context.parameters.sampleProperty.raw != null ) {
+            message = messagePrefix.concat( " ", context.parameters.sampleProperty.raw, messageSuffix );
+        } else {
+            message = messagePrefix.concat( messageSuffix );
+        }
+
+        const props: IHelloWorldProps = { name: message };
         return React.createElement(
             HelloWorld, props
         );
