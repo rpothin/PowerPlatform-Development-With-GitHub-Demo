@@ -74,6 +74,7 @@ jobs:
   
   # Job to import the Dataverse solution to the Development environment
   import-solution-to-dev:
+    needs: prepare-components-build-solution
     environment:
       name: development
     runs-on: ubuntu-latest
