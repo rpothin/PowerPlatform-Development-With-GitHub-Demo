@@ -47,9 +47,6 @@ jobs:
           echo "==========  List PCF components =========="
           $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Directory | Select-Object FullName
 
-          $pcfComponentsFolderPath = $pcfComponentsFolderPath | ConvertTo-Json
-          $pcfComponentsFolderPath = $pcfComponentsFolderPath -replace '\n', '' | ConvertFrom-Json
-
           Write-Host $pcfComponentsFolderPath
 
           echo "==========  Prepare each PCF component =========="
