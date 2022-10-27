@@ -1,0 +1,105 @@
+name: import-solution-to-dev
+# Build PCF components and Dataverse solution, then import it to the Development environment
+
+# Workflow that is triggered by a push of updates in the "components/" folder on the main branch
+on:
+  workflow_dispatch:
+  push:
+    branches: [ dev/** ]
+    paths:
+      - 'components/**'
+      - '!.devcontainer/**'
+      - '!.github/**'
+      - '!solutions/**'
+      - '!LICENSE'
+      - '!README.md'
+
+# Concurrency configuration for the current workflow - Put new workflows in queue in pending state
+concurrency: import-solution-to-dev
+
+# Environment variables
+env:
+  SOLUTION_NAME: PowerPlatformDevWithGitHub
+
+jobs:
+  # Job to prepare all the PCF components under the 'components' folder and build the Dataverse solution
+  prepare-components-build-solution:
+    runs-on: ubuntu-latest
+    env:
+      RUNNER_DEBUG: 1
+
+    steps:
+      # Action used to checkout the branch which triggered the workflow in the current repository
+      #   Community action: https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+
+      # Action to setup node
+      #   Community action: https://github.com/actions/setup-node
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      
+      # Prepare PCF components
+      - name: Prepare PCF components
+        run: |
+          echo "==========  List PCF components =========="
+          $pcfComponentsFolderPath = Get-ChildItem -Path ./components -Recurse -Directory -Force | Select-Object FullName
+          $pcfComponentsFolderPath
+
+          echo "==========  Prepare each PCF component =========="
+          foreach ($pcfComponentFolderPath in $pcfComponentsFolderPath) {
+            $pcfComponentFolderPath
+            cd $pcfComponentFolderPath
+            npm ci
+            npm run build
+          }
+        shell: pwsh
+
+      # Build Dataverse solution
+      - name: Build Dataverse solution
+        run: |
+          cd solutions/${{ env.SOLUTION_NAME }}
+          dotnet msbuild /t:build /restore
+        shell: pwsh
+
+      # Upload the managed solution we got in the previous step to the GitHub artifact store
+      #   Action: https://docs.github.com/en/free-pro-team@latest/actions/guides/storing-workflow-data-as-artifacts
+      - name: Upload the ready to ship solution to GH artifact store
+        uses: actions/upload-artifact@v3
+        with:
+          name: managedSolutions
+          path: solutions/${{ env.SOLUTION_NAME }}/bin/Debug/${{ env.SOLUTION_NAME }}.zip
+  
+  # Job to import the Dataverse solution to the Development environment
+  import-solution-to-dev:
+    environment:
+      name: development
+    runs-on: ubuntu-latest
+    env:
+      RUNNER_DEBUG: 1
+
+    steps:
+      # Get the content of the GitHub artifact store prepared in a previous job
+      #   Action: https://docs.github.com/en/free-pro-team@latest/actions/guides/storing-workflow-data-as-artifacts
+      - name: Get solution from GH artifact store
+        uses: actions/download-artifact@v3
+        with:
+          name: managedSolutions
+          path: out/managedSolutions/
+
+      # Import the considered solution to the targeted environment
+      #   Microsoft action: https://github.com/microsoft/powerplatform-actions/blob/main/import-solution/action.yml
+      - name: Import solution to Dev
+        uses: microsoft/powerplatform-actions/import-solution@main
+        with:
+          app-id: ${{ secrets.APPLICATION_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          environment-url: ${{ secrets.DATAVERSE_ENVIRONMENT_URL }}
+          solution-file: out/managedSolutions/${{ env.SOLUTION_NAME }}.zip
+          force-overwrite: true
+          publish-changes: true
+          skip-dependency-check: false
+          run-asynchronously: true
