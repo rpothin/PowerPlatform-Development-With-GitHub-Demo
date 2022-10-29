@@ -49,6 +49,8 @@ jobs:
 
           Write-Host $pcfComponentsFolderPath
 
+          $pcfComponentsFolderPath.GetType()
+
           echo "==========  Prepare each PCF component =========="
           foreach ($pcfComponentFolderPath in $pcfComponentsFolderPath) {
             $pcfComponentFolderPath
