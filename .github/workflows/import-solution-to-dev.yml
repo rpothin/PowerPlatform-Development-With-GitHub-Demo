@@ -47,9 +47,7 @@ jobs:
           echo "==========  List PCF components =========="
           $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Directory | Select-Object FullName
 
-          Write-Host $pcfComponentsFolderPath
-
-          $pcfComponentsFolderPath.GetType()
+          $pcfComponentsFolderPath
           
           echo "==========  Prepare each PCF component =========="
           foreach ($pcfComponentFolderPath in $pcfComponentsFolderPath) {
