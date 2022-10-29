@@ -51,6 +51,12 @@ jobs:
 
           $pcfComponentsFolderPath.GetType()
 
+          $pcfComponentsFolderPath = $pcfComponentsFolderPath | ConvertTo-Json
+
+          Write-Host $pcfComponentsFolderPath
+
+          $pcfComponentsFolderPath.GetType()
+
           echo "==========  Prepare each PCF component =========="
           foreach ($pcfComponentFolderPath in $pcfComponentsFolderPath) {
             $pcfComponentFolderPath
