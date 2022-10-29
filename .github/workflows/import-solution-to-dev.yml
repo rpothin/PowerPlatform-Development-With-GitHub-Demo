@@ -101,7 +101,7 @@ jobs:
           tenant-id: ${{ secrets.TENANT_ID }}
           environment-url: ${{ secrets.DATAVERSE_ENVIRONMENT_URL }}
           solution-file: out/managedSolutions/${{ env.SOLUTION_NAME }}.zip
-          force-overwrite: true
+          force-overwrite: false
           publish-changes: true
           skip-dependency-check: false
           run-asynchronously: true
