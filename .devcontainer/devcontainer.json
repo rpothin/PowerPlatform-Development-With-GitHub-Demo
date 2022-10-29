@@ -13,7 +13,8 @@
 		"ms-dotnettools.vscode-dotnet-runtime",
 		"microsoft-IsvExpTools.powerplatform-vscode",
 		"GitHub.copilot",
-		"GitHub.copilot-labs"
+		"GitHub.copilot-labs",
+		"ms-dotnettools.dotnet-interactive-vscode"
 	],
     "forwardPorts": [
         8181
