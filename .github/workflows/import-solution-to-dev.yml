@@ -58,6 +58,7 @@ jobs:
           $pcfComponentsFolderPath.GetType()
 
           $pcfComponentsFolderPath = $pcfComponentsFolderPath -replace '"', "'"
+          $pcfComponentsFolderPath = $pcfComponentsFolderPath -replace '\n', ''
 
           Write-Host $pcfComponentsFolderPath
 
