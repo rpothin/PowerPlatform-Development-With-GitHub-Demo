@@ -50,30 +50,11 @@ jobs:
           Write-Host $pcfComponentsFolderPath
 
           $pcfComponentsFolderPath.GetType()
-
-          $pcfComponentsFolderPath = $pcfComponentsFolderPath | ConvertTo-Json
-
-          Write-Host $pcfComponentsFolderPath
-
-          $pcfComponentsFolderPath.GetType()
-
-          $pcfComponentsFolderPath = $pcfComponentsFolderPath -replace '"', "'"
-          $pcfComponentsFolderPath = $pcfComponentsFolderPath -replace '\n', ''
-
-          Write-Host $pcfComponentsFolderPath
-
-          $pcfComponentsFolderPath.GetType()
-
-          $pcfComponentsFolderPath = $pcfComponentsFolderPath | ConvertFrom-Json
-
-          Write-Host $pcfComponentsFolderPath
-
-          $pcfComponentsFolderPath.GetType()
-
+          
           echo "==========  Prepare each PCF component =========="
           foreach ($pcfComponentFolderPath in $pcfComponentsFolderPath) {
             $pcfComponentFolderPath
-            cd $pcfComponentFolderPath
+            cd $pcfComponentFolderPath.FullName
             npm ci
             npm run build
           }
