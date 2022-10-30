@@ -32,7 +32,7 @@ It is a GitHub repository used for demonstrations of Power Platform development 
 
 ### Create a new PCF component
 
-1. Open a GitHub Codespace (*the `Code` green button on the main page of the repository > `Codespaces` tab)
+1. Open a GitHub Codespace (*the `Code` green button on the main page of the repository > `Codespaces` tab*)
 2. In the **Terminal** run the following command from the root of the repository: `pwsh ./scripts/initialize-pcf-component.ps1`
 3. Under the name of the PCF component you want to create when you see the corresponding question
 4. Select the type of the PCF component you want to create when you the corresponding question
