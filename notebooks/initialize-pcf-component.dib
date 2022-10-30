@@ -1,0 +1,50 @@
+#!markdown
+
+# Initialize a new PCF component notebook
+
+#!markdown
+
+## Variables
+
+#!pwsh
+
+# Base of the path to files and folders in GitHub Codespaces for this repository
+$basePath = "/workspaces/PowerPlatform-Development-With-GitHub-Demo"
+# Name of the Dataverse solution where the PCF components are added
+$solutionName = "PowerPlatformDevWithGitHub"
+# Namespace used for the initialization of the PCF component
+$pcfComponentNamespace = "DemoNamespace"
+
+#!csharp
+
+// Name of the PCF component to initialized
+string pcfComponentName = await GetInputAsync("Enter the name of the PCF component to initialize (e.g. component0)");
+
+#!pwsh
+
+#!share --from csharp pcfComponentName
+
+echo $pcfComponentName
+
+#!markdown
+
+## Initialize new PCF component
+
+#!markdown
+
+### Create folder for new PCF component
+
+#!pwsh
+
+#!share --from csharp pcfComponentName
+
+cd "$basePath/components"
+mkdir $pcfComponentName
+
+#!markdown
+
+### Run pac pcf init
+
+#!pwsh
+
+ls
