@@ -32,7 +32,7 @@ $pcfComponentNamespace = "DemoNamespace"
 $pcfComponentName = Read-Host "Enter the name of the PCF component to initialize (e.g. component0)"
 
 # Type of the PCF component to initialized
-$pcfCompcfComponentTypeponentName = Read-Host "Enter the type of the PCF component to initialize (field or dataset)"
+$pcfComponentType = Read-Host "Enter the type of the PCF component to initialize (field or dataset)"
 
 #endregion Variables
 

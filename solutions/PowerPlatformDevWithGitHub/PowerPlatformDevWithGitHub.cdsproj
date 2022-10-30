@@ -45,6 +45,7 @@
   
   <ItemGroup>
     <ProjectReference Include="../../components/component1/component1.pcfproj" />
+    <ProjectReference Include="../../components/component0/component0.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
