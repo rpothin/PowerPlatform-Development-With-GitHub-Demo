@@ -19,6 +19,7 @@ on:
       - '!.devcontainer/**'
       - '!.github/**'
       - '!solutions/**'
+      - '!scripts/**'
       - '!LICENSE'
       - '!README.md'
   pull_request:
@@ -29,6 +30,7 @@ on:
       - '!.devcontainer/**'
       - '!.github/**'
       - '!solutions/**'
+      - '!scripts/**'
       - '!LICENSE'
       - '!README.md'
   schedule:
