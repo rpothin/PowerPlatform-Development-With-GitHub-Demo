@@ -72,7 +72,7 @@ jobs:
 
           $solutionFile = 'solutions\${{ env.SOLUTION_NAME }}\src\Other\Solution.xml'
           $regex = '<Version>[\s\S]*?<\/Version>'
-          (Get-Content $solutionFile) -replace $regex, '<Version>$solutionVersion</Version>' | Set-Content $file
+          (Get-Content $solutionFile) -replace $regex, '<Version>$solutionVersion</Version>' | Set-Content $solutionFile
         shell: pwsh
 
       # Build Dataverse solution
