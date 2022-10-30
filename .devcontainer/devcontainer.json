@@ -7,7 +7,9 @@
         }
     },
     "features": {
-        "dotnet": "6.0"
+		"github-cli": "latest",
+		"powershell": "latest",
+        "dotnet": "latest"
     },
     "extensions": [
 		"ms-dotnettools.vscode-dotnet-runtime",
