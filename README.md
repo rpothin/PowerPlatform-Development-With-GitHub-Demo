@@ -30,6 +30,10 @@ It is a GitHub repository used for demonstrations of Power Platform development 
 > **Note**
 > This repository is built to be used with GitHub Codespaces to easily have the right tools directly available.
 
+### Work on a GitHub issue
+
+...
+
 ### Create a new PCF component
 
 1. Open a GitHub Codespace (*the `Code` green button on the main page of the repository > `Codespaces` tab*)
