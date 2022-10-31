@@ -13,7 +13,10 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - 'main'
+      - 'work/**'
+      - 'hotfix/**'
     paths:
       - 'components/**'
       - '!.devcontainer/**'
@@ -24,7 +27,10 @@ on:
       - '!README.md'
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "main" ]
+    branches:
+      - 'main'
+      - 'work/**'
+      - 'hotfix/**'
     paths:
       - 'components/**'
       - '!.devcontainer/**'
