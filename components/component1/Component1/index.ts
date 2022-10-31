@@ -32,6 +32,13 @@ export class Component1 implements ComponentFramework.ReactControl<IInputs, IOut
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
+        const dist = 3;
+        const loc = null;
+        if (dist < 10)
+            loc = "here";
+        else
+            loc = "there";
+
         var messagePrefix = "Hello world";
         var messageSuffix = "!";
 
