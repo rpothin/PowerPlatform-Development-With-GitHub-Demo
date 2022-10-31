@@ -5,7 +5,9 @@ name: import-solution-to-dev
 on:
   workflow_dispatch:
   push:
-    branches: [ dev/** ]
+    branches:
+      - 'work/**'
+      - 'hotfix/**'
     paths:
       - 'components/**'
       - '!.devcontainer/**'
