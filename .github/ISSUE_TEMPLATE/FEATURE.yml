@@ -1,0 +1,33 @@
+name: Feature Request
+description: Request to bring new features to PCF components developed in this repository
+title: "[Feature] <Title>"
+labels: [enhancement]
+assignees:
+  - rpothin
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature description
+      description: Please, give us a good overview of the feature you would like to add.
+      placeholder: "ex: When I click on Button A I would like to have '...'"
+    validations:
+      required: true
+  - type: dropdown
+    id: new-component-question
+    attributes:
+      label: New component?
+      description: Does a new component would be required to implement this feature?
+      options:
+        - No
+        - Yes
+    validations:
+      required: true
+  - type: input
+    id: existing-component-name
+    attributes:
+      label: Existing component to update
+      description: If we could update an existing to implement this feature, which one would it be?
+      placeholder: ex. component0
+    validations:
+      required: false
