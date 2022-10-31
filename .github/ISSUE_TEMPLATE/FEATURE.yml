@@ -2,8 +2,6 @@ name: Feature Request
 description: Request to bring new features to PCF components developed in this repository
 title: "[Feature] <Title>"
 labels: [enhancement]
-assignees:
-  - rpothin
 body:
   - type: textarea
     id: feature-description

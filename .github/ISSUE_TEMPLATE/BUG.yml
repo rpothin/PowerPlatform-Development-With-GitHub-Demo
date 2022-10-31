@@ -2,8 +2,6 @@ name: Bug Report
 description: Bug report to help us improve the quality of the PCF components developed in this repository
 title: "[Bug] <Title>"
 labels: [bug]
-assignees:
-  - rpothin
 body:
   - type: textarea
     id: bug-description
