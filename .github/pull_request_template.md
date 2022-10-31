@@ -30,7 +30,7 @@ Please also list any relevant details for your test configuration.>
 <We encourage you to check all the options below before submitting your pull request.
 This will help us verify it more quickly.>
 
-- [ ] I have used the provided .Net Interactive notebook to initialize the PCF components I have created (*required for new components*)
+- [ ] I have used the provided PowerShell script to initialize the PCF components I have created (*required for new components*)
 - [ ] I have updated the version of the PCF components I have updated (*required for updated components*)
 - [ ] I validated the quality of my changes on the PCF components by running manual tests
 
