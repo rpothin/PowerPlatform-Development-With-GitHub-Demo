@@ -32,7 +32,15 @@ It is a GitHub repository used for demonstrations of Power Platform development 
 
 ### Work on a GitHub issue
 
-...
+1. Open the [PowerPlatform-Development-With-GitHub-Demo](https://github.com/users/rpothin/projects/4/views/1) project to manage the backlog of work related to this repository
+2. Create an item from the project - *its status will automatically be set to **Not Yet Planned ⁉***
+3. Add labels to the item to make it more understandable - *when doing this step the item will be converted to an issue in the current project*
+4. When the team is ready to work on an issue, set its status to **Planned 📅** and assign it
+5. When starting to work on an issue, the first thing to do will be to set the status to **In Progress ⚒** and to initialize a branch with the following name format: `work/**`
+6. Work on the issue
+7. On each push in the **components** folder in your branch, a new version of the Dataverse solution will be deployed to the development environment configured in the GitHub repository
+8. When the work is ready for validation, create a pull request
+9. Once the pull request has been reviewed, approved and the changes pushed to the main branch, they will be deploy to the other environments until the production
 
 ### Create a new PCF component
 
