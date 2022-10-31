@@ -32,9 +32,9 @@ It is a GitHub repository used for demonstrations of Power Platform development 
 
 ### Work on a GitHub issue
 
-1. Open the [PowerPlatform-Development-With-GitHub-Demo](https://github.com/users/rpothin/projects/4/views/1) project to manage the backlog of work related to this repository
-2. Create an item from the project - *its status will automatically be set to **Not Yet Planned ⁉***
-3. Add labels to the item to make it more understandable - *when doing this step the item will be converted to an issue in the current project*
+1. Go to the [Issues](https://github.com/rpothin/PowerPlatform-Development-With-GitHub-Demo/issues) tab, an create a new issue by selecting the **Feature** template
+2. Add the new issue to the [PowerPlatform-Development-With-GitHub-Demo](https://github.com/users/rpothin/projects/4/views/1) project
+3. Add labels to the issue to make it more understandable
 4. When the team is ready to work on an issue, set its status to **Planned 📅** and assign it
 5. When starting to work on an issue, the first thing to do will be to set the status to **In Progress ⚒** and to initialize a branch with the following name format: `work/**`
 6. Work on the issue
