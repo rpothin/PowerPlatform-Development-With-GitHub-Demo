@@ -19,8 +19,8 @@ body:
       label: New component?
       description: Does a new component would be required to implement this feature?
       options:
-        - No
-        - Yes
+        - 'No'
+        - 'Yes'
     validations:
       required: true
   - type: input
