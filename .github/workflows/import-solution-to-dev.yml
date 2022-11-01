@@ -49,7 +49,7 @@ jobs:
         run: |
           echo "==========  List PCF components configured in Dataverse solution =========="
           ls
-          $solutionCdsprojFilePath = "solutions/${{ env.SOLUTION_NAME }}/${{ env.SOLUTION_NAME }}.cdsjproj"
+          $solutionCdsprojFilePath = "./solutions/${{ env.SOLUTION_NAME }}/${{ env.SOLUTION_NAME }}.cdsjproj"
           [xml]$solutionCdsprojFileContent = Get-Content $solutionCdsprojFilePath
           $refs = $solutionCdsprojFileContent.Project.ItemGroup | Where-Object {$_.ProjectReference.Include -like "../../components*"}
 
