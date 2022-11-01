@@ -83,7 +83,9 @@ jobs:
       # Set a current date environment variable in the following format: YYYYMMDD
       - name: Set current date as env variable
         id: current_date
-        run: echo "NOW=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+        run: |
+          $currentDate = Get-Date -Format "yyyymmdd"
+          echo "NOW=$currentDate" >> $GITHUB_OUTPUT
         shell: pwsh
       
       # Set Dataverse solution version
