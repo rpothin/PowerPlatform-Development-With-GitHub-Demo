@@ -47,6 +47,24 @@ jobs:
       # Prepare PCF components
       - name: Prepare PCF components
         run: |
+          echo "==========  List PCF components configured in Dataverse solution =========="
+          $solutionCdsprojFilePath = "solutions/${{ env.SOLUTION_NAME }}/${{ env.SOLUTION_NAME }}.cdsproj"
+          [xml]$solutionCdsprojFileContent = Get-Content $solutionCdsprojFilePath
+          $refs = $solutionCdsprojFileContent.Project.ItemGroup | Where-Object {$_.ProjectReference.Include -like "../../components*"}
+          $pcfComponentsFolderPaths = $refs.ProjectReference.Include
+
+          echo "==========  Prepare each PCF component =========="
+          foreach ($pcfComponentFolderPath in $pcfComponentsFolderPaths) {
+            $pcfComponentFolderName = $pcfComponentFolderPath.split("/")[3]
+            echo "----------  Prepare '$pcfComponentFolderName' PCF component ----------"
+
+            cd "${{ github.workspace }}/components/$pcfComponentFolderName"
+            
+            npm ci
+            npm run build
+          }
+          
+          <#
           echo "==========  List PCF components =========="
           $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Directory | Select-Object FullName
 
@@ -59,18 +77,14 @@ jobs:
             npm ci
             npm run build
           }
+          #>
         shell: pwsh
 
-      # Set a current date environment variable in the following format: YYYYMMDD
-      - name: Set current date as env variable
-        id: current_date
-        run: echo "NOW=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
-        shell: pwsh
-      
       # Set Dataverse solution version
       - name: Set Dataverse solution version
         run: |
-          $solutionVersion = '1.${{ steps.current_date.outputs.NOW }}.${{ github.run_number }}'
+          $currentDate = Get-Date -Format "yyyymmdd"
+          $solutionVersion = "1.$currentDate.${{ github.run_number }}"
           echo "Solution version: $solutionVersion"
 
           $solutionFile = 'solutions\${{ env.SOLUTION_NAME }}\src\Other\Solution.xml'
