@@ -58,7 +58,7 @@ jobs:
             $pcfComponentFolderName = $pcfComponentFolderPath.split("/")[3]
             echo "----------  Prepare '$pcfComponentFolderName' PCF component ----------"
 
-            cd "components/$pcfComponentFolderName"
+            cd "${{ github.workspace }}/components/$pcfComponentFolderName"
             
             npm ci
             npm run build
