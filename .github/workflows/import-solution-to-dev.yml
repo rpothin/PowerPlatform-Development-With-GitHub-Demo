@@ -52,6 +52,8 @@ jobs:
 
           cd "solutions/${{ env.SOLUTION_NAME }}"
 
+          ls
+
           [xml]$solutionCdsprojFileContent = Get-Content ${{ env.SOLUTION_NAME }}.cdsjproj
           $refs = $solutionCdsprojFileContent.Project.ItemGroup | Where-Object {$_.ProjectReference.Include -like "../../components*"}
 
