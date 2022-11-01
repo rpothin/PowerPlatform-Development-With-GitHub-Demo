@@ -51,11 +51,13 @@ jobs:
           $solutionCdsprojFilePath = "solutions/${{ env.SOLUTION_NAME }}/${{ env.SOLUTION_NAME }}.cdsproj"
           [xml]$solutionCdsprojFileContent = Get-Content $solutionCdsprojFilePath
           $refs = $solutionCdsprojFileContent.Project.ItemGroup | Where-Object {$_.ProjectReference.Include -like "../../components*"}
+          $pcfComponentsFolderPaths = $refs.ProjectReference.Include
 
           echo "==========  Prepare each PCF component =========="
-          foreach ($ref in $refs) {
-            $pcfComponentFolderPath = $ref.ProjectReference.Include
+          foreach ($pcfComponentFolderPath in $pcfComponentsFolderPaths) {
             $pcfComponentFolderName = $pcfComponentFolderPath.split("/")[3]
+            echo "----------  Prepare '$pcfComponentFolderName' PCF component ----------"
+
             cd "components/$pcfComponentFolderName"
             
             npm ci
