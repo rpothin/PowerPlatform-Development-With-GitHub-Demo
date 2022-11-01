@@ -48,8 +48,9 @@ jobs:
       - name: Prepare PCF components
         run: |
           echo "==========  List PCF components configured in Dataverse solution =========="
-          $solutionCdsprojFilePath = "solutions\${{ env.SOLUTION_NAME }}\${{ env.SOLUTION_NAME }}.cdsjproj"
-          [xml]$solutionCdsprojFileContent = Get-Content $solutionCdsprojFilePath
+          $solutionCdsprojFileFolderPath = "solutions/${{ env.SOLUTION_NAME }}"
+          $filesInsolutionCdsprojFileFolder = Get-ChildItem -Path $solutionCdsprojFileFolderPath -Directory | Select-Object FullName
+          [xml]$solutionCdsprojFileContent = Get-Content $filesInsolutionCdsprojFileFolder[0]
           $refs = $solutionCdsprojFileContent.Project.ItemGroup | Where-Object {$_.ProjectReference.Include -like "../../components*"}
 
           echo "==========  Prepare each PCF component =========="
