@@ -47,6 +47,22 @@ jobs:
       # Prepare PCF components
       - name: Prepare PCF components
         run: |
+          echo "==========  List PCF components configured in Dataverse solution =========="
+          $solutionCdsprojFilePath = "solutions/${{ env.SOLUTION_NAME }}/${{ env.SOLUTION_NAME }}.cdsjproj"
+          [xml]$solutionCdsprojFileContent = Get-Content $solutionCdsprojFilePath
+          $refs = $solutionCdsprojFileContent.Project.ItemGroup | Where-Object {$_.ProjectReference.Include -like "../../components*"}
+
+          echo "==========  Prepare each PCF component =========="
+          foreach ($ref in $refs) {
+            $pcfComponentFolderPath = $ref.ProjectReference.Include
+            $pcfComponentFolderName = $pcfComponentFolderPath.split("/")[3]
+            cd "components/$pcfComponentFolderName"
+            
+            npm ci
+            npm run build
+          }
+          
+          <#
           echo "==========  List PCF components =========="
           $pcfComponentsFolderPath = Get-ChildItem -Path 'components/' -Directory | Select-Object FullName
 
@@ -59,6 +75,7 @@ jobs:
             npm ci
             npm run build
           }
+          #>
         shell: pwsh
 
       # Set a current date environment variable in the following format: YYYYMMDD
